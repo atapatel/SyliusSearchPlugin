@@ -11,11 +11,10 @@
 
 declare(strict_types=1);
 
-namespace MonsieurBiz\SyliusSearchPlugin\Context;
+namespace MonsieurBiz\SyliusSearchPlugin\Fixture;
 
-use Sylius\Component\Core\Model\TaxonInterface;
+use Sylius\Bundle\FixturesBundle\Fixture\FixtureInterface;
 
-interface TaxonContextInterface
+interface FilterableFixtureInterface extends FixtureInterface
 {
-    public function getTaxon(): TaxonInterface;
 }

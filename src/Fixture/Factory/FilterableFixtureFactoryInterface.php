@@ -11,11 +11,10 @@
 
 declare(strict_types=1);
 
-namespace MonsieurBiz\SyliusSearchPlugin\Context;
+namespace MonsieurBiz\SyliusSearchPlugin\Fixture\Factory;
 
-use Sylius\Component\Core\Model\TaxonInterface;
+use Sylius\Bundle\CoreBundle\Fixture\Factory\ExampleFactoryInterface;
 
-interface TaxonContextInterface
+interface FilterableFixtureFactoryInterface extends ExampleFactoryInterface
 {
-    public function getTaxon(): TaxonInterface;
 }

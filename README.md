@@ -53,7 +53,7 @@ Modify `config/bundles.php` to add this line at the end :
     MonsieurBiz\SyliusSearchPlugin\MonsieurBizSyliusSearchPlugin::class => ['all' => true],
 ```
 
-Finally configure plugin in your `.env` file, ina dding this att the end : 
+Finally configure plugin in your `.env` file by adding these lines at the end : 
 ```
 ###> MonsieurBizSearchPlugin ###
 MONSIEURBIZ_SEARCHPLUGIN_ES_HOST=localhost
@@ -290,11 +290,16 @@ By default, the form is displayed on `sonata.block.event.sylius.shop.layout.head
 
 ## Front customization
 
-You can override all templates in your theme to : 
-- Customize search results display page (`src/MonsieurBizSearchPlugin/Resources/views/Search/`)
-- Customize instant search display block (`src/MonsieurBizSearchPlugin/Resources/views/Instant/`)
-- Customize instant search display block (`src/MonsieurBizSearchPlugin/Resources/views/Taxon/`)
-- Customize JS parameters (`src/MonsieurBizSearchPlugin/Resources/views/js.html.twig`)
+You can override all templates in your theme.
+
+The bundle's templates are : 
+- Search results display page (`src/MonsieurBizSearchPlugin/Resources/views/Search/`)
+- Instant search display block (`src/MonsieurBizSearchPlugin/Resources/views/Instant/`)
+- Taxon results display page (`src/MonsieurBizSearchPlugin/Resources/views/Taxon/`)
+- Smaller components (`src/MonsieurBizSearchPlugin/Resources/views/Common/`)
+- JS parameters (`src/MonsieurBizSearchPlugin/Resources/views/js.html.twig`)
+
+Sylius documentation to customize these templates is available [here](https://docs.sylius.com/en/latest/customization/template.html).
 
 ## Jane
 
@@ -320,3 +325,33 @@ You can also find YAML used by plugin to perform the search on Elasticsearch :
 - `src/MonsieurBizSearchPlugin/Resources/config/elasticsearch/queries/taxon.yaml`
 
 These queries can be customized in another folder if you change the plugin config.
+
+## Fixtures
+
+You can use fixtures to define filterable and non-filterable options and attributes : 
+
+```yaml
+
+sylius_fixtures:
+    suites:
+        default:
+            fixtures:
+                monsieurbiz_sylius_search_filterable:
+                    options:
+                        custom:
+                            cap_collection:
+                                attribute: 'cap_collection'
+                                filterable: false
+
+                            dress_collection:
+                                attribute: 'dress_collection'
+                                filterable: false
+
+                            dress_height:
+                                option: 'dress_height'
+                                filterable: false
+
+                            dress_size:
+                                option: 'dress_size'
+                                filterable: true
+```
